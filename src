@@ -1,0 +1,58 @@
+PImage cloud1Img;
+PImage cloud2Img;
+PImage sunImg;
+PImage moonImg;
+boolean sun = false;
+boolean moon = false;
+int sunX = 0;
+int sunY = 0;
+int x1 = 0;
+int x2 = 20;
+
+void setup() {
+  size(400, 400);
+  cloud1Img = loadImage("clouds.png");
+  cloud2Img = loadImage("clouds.png");
+  sunImg = loadImage("sun.png");
+  moonImg = loadImage ("moon.png");
+} 
+void draw () {
+  background(144, 222, 255);
+  if (sun == true && mousePressed) {
+    image (sunImg, sunX, sunY, 50, 50);
+  } 
+  if (moon == true) {
+    background (13, 6, 84);
+    if (mousePressed) {
+    image (moonImg, mouseX, mouseY,50,50);
+    }
+  }  
+
+  if (x1 < 460) {
+    x1 = x1 + 1;
+    image (cloud1Img, x1, 0, 50, 30);
+  } else {
+    x1 = -100;
+  }
+  if (x2 < 460) {
+    x2 = x2 + 4;
+    image (cloud2Img, x2, 80, 50, 30);
+  } else x2 = -100; 
+  {
+  }
+}
+void mousePressed() {
+  sun = true;
+  sunX = mouseX;
+  sunY = mouseY;
+  
+}
+void keyPressed() {
+ if (key == 'n') {
+  moon = true; 
+ }
+ if (key == 'd') {
+ sun =true;
+ moon = false;
+ }
+}
